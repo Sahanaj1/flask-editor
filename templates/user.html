@@ -1,0 +1,18 @@
+<h1>hello {{username | capitalize}}</h1>
+<h1>this is the user page</h1>
+
+<p>{{stuff| safe}}</p>
+
+<!-- safe can be used to render the html in its own form -->
+<!-- striptags will remove all the html tags which will be rendered -->
+<!-- title will capitalize every first word -->
+
+{% for topping in fav_pizza%}
+    {% if topping==41 %}
+        {{topping+10}}<br/>
+    {%else %}
+        {{topping}}<br/>
+    {%endif%}
+
+<!-- {{topping}}<br/> -->
+{%endfor%}
