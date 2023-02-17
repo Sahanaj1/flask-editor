@@ -1,5 +1,5 @@
 import app
-from flask import Flask,render_template, requests,flash
+from flask import Flask,render_template, request,flash
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 from wtforms.validators import DataRequired
@@ -38,9 +38,10 @@ class PostForm(FlaskForm):
 @app.route('/add-post',methods=['GET','POST'])
 def add_post():
     form=PostForm()
+    content=''
     if form.validate_on_submit():
         content=form.content.data
-        post=Posts(title=form.title.data,content=form.content.data,author=form.author.data,slug=form.slug.data)
+        post=Posts(title=form.title.data,content=content,author=form.author.data,slug=form.slug.data)
         form.title.data=''
         form.content.data=''
         form.author.data=''
@@ -71,8 +72,8 @@ def add_post():
 #             flash('Post submission failed')
 #     return render_template('add_post.html', form=form)
 
-@app.route('/posted-data',methods=['POST'])
-def 
+# @app.route('/posted-data',methods=['POST'])
+# def 
 
 class Users(db.Model):
     id=db.Column(db.Integer, primary_key=True)
